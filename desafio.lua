@@ -1,45 +1,6 @@
 
 
---[[
 
-Nome da criatura   
-Decrição
-Som que faz
-Atrubutos
-    Ataque
-    Defesa
-    Vitalidade
-    velocidade
-    Inteligência
-Habilidades
-    Furtividade
-    Explosão
-
-    =================================================================================================================
-                                                             _____
-                                                            | -  -|
-                DESAFIO EM LUA :   FICHA DE MONSTROS        |  *  |
-                                                            | --- |
-
-    =================================================================================================================
-    /
-    /   Creeper
-    /   Um monstro muito sagaz com um temperamento explosivo
-    /   emoji
-    /
-    /
-    /   Som:
-    /       Tssssssss
-    /
-    /   Atrubutos:
-    /       Ataque :  ########00
-    /       Defesa :  ###0000000
-    /       ...
-        /
-    /
-    =================================================================================================================
-
-]]
 
 --habilitar utf-8 no terminal para aceitar emoji e acentos
 os.execute("chcp 65001")
