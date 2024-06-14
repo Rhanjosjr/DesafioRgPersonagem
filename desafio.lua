@@ -1,72 +1,48 @@
 
-
---[[
-
-Nome da criatura   
-Decrição
-Som que faz
-Atrubutos
-    Ataque
-    Defesa
-    Vitalidade
-    velocidade
-    Inteligência
-Habilidades
-    Furtividade
-    Explosão
-
-    =================================================================================================================
-                                                             _____
-                                                            | -  -|
-                DESAFIO EM LUA :   FICHA DE MONSTROS        |  *  |
-                                                            | --- |
-
-    =================================================================================================================
-    /
-    /   Creeper
-    /   Um monstro muito sagaz com um temperamento explosivo
-    /   emoji
-    /
-    /
-    /   Som:
-    /       Tssssssss
-    /
-    /   Atrubutos:
-    /       Ataque :  ########00
-    /       Defesa :  ###0000000
-    /       ...
-        /
-    /
-    =================================================================================================================
-
-]]
-
 --habilitar utf-8 no terminal para aceitar emoji e acentos
 os.execute("chcp 65001")
 --para retirar a impressao do terminal, devemos realizar a limpeza do terminal
 os.execute("cls")
 
 
---criatura
-local monsterName = " Terror da noite"
-local species = " Draconica"
-local monsterDescription = " Um terrivel dragão furtivo, capaz de emitri chamas negras que consomem tudo em sua frente"
-local symbol = "🐉"
-local sound = " Uhahhhhhh"
-local favoriteTime = " Noturno"
-local habbitat = " Montanhas da perdição"
-local heightMax = " Altura máxima de 45 metros"
+--criando dicionarios
+local monsters = {
+    Dragon = {
+        Nome = " Terror da noite",
+        Especie = " Draconica",
+        Descricao = " Um terrivel dragão furtivo, capaz de emitri chamas negras que consomem tudo em sua frente",
+        Simbolo ="🐉",
+        Som = " Uhahhhhhh",
+        Atividade = " Noturna",
+        Habbitat = " Montanha da perdição",
+        Altura = "Altura máxima de 45 metros",
+        Ataque = 10,
+        Defesa = 7,
+        Vida = 6,
+        Velocidade= 8,
+        Inteligencia = 10
+
+    },
+    Spider = {
+        Nome = " Rainha da noite",
+        Especie = " Aracnideo",
+        Descricao = " Uma aranha gigantesca que prende suas presar e se alimenta sulgando vitalidade delas",
+        Simbolo ="🕷",
+        Som = " ---- ",
+        Atividade = " Noturna",
+        Habbitat = " Montanha da perdição",
+        Altura = "Altura máxima de 20 metros",
+        Ataque = 5,
+        Defesa = 4,
+        Vida = 6,
+        Velocidade= 8,
+        Inteligencia = 6
+    }
+}
 
 
---atributos
-local attackAttribute = 10
-local defenseAttribute = 7
-local lifeyAattribute = 6
-local speedAttribute = 8
-local inteligenceAttribute = 10
 
---função usada para calcular a barra de progresso
----função que recebe um atributo e nos retorna uma barra de progresso em string
+--função usada para calcular a barra de progresso---função que recebe um atributo e nos retorna uma barra de progresso em string
 local function getProgressBar(attribute)
     local resultado = ""
 
@@ -87,29 +63,78 @@ end
 
 
 
---Cartão
-print("  =================================================================================================================")
-print("                                 DESAFIO EM LUA :   FICHA DE MONSTROS        (●'◡'●)")
-print("  =================================================================================================================")
-print("| ")
-print("| " .."                 Criatura:" .. monsterName)
-print("|                            " .. monsterDescription)
-print("| " .."                  Espécie: " .. species)
-print("| " .."     Som da caractristico: " .. sound)
-print("| " .."           Tamanho máximo: " .. heightMax)
-print("| " .."   Simbolo representativo: " .. symbol)
-print("| " .."     Horário de atividade: " .. favoriteTime)
-print("| " .."                  Habitat: " .. habbitat)
-print("| ")
-print("| ".."Atributos:")
-print("|        Ataque: "..getProgressBar(attackAttribute))
-print("|        Defesa: "..getProgressBar(defenseAttribute))
-print("|          Vida: "..getProgressBar(lifeyAattribute))
-print("|    Velocidade: "..getProgressBar(speedAttribute))
-print("|  Inteligência: "..getProgressBar(inteligenceAttribute))
-print("| ")
-print("  =================================================================================================================")
-print()
-print()
+
+--Para repetir todo o bloco ate ser digitado exit
+local exitProgram = false
+while exitProgram == false do
+    print("Olá aventureiro, esses são os monstros catalogados em nosso mundo de aventura!")
+        for key, value in pairs(monsters) do
+            print(key)
+        end
+    print()
+    print("-----------------------------------------------------------------------------------")
+    print("Escolha um dos monstros da lista para verificar suas caracteristicas e atributos, ou digite exit, para encerrar o programa: ")
+
+    --escolha do usuário
+    local choiceUser = io.read()
+
+    --verificando a escolha se e nill
+    local verificar  = monsters[choiceUser]
+    --print(verificar)
+
+        if  choiceUser == "exit" then
+            exitProgram = true
+            print("LEMBRE-SE o perigo espreita .....aguardando um momento, esteja sempre preparado!!!!")
+            print()
+            print()
+        elseif verificar == nil then
+            print("monstro não cadastrado")
+        else  
+    --criatura
+            local monsterName = monsters[choiceUser].Nome
+            local species = monsters[choiceUser].Especie
+            local monsterDescription = monsters[choiceUser].Descricao
+            local symbol = monsters[choiceUser].Simbolo
+            local sound = monsters[choiceUser].Som
+            local favoriteTime =monsters[choiceUser].Atividade
+            local habbitat = monsters[choiceUser].Habbitat
+            local heightMax = monsters[choiceUser].Altura
+    --atributos
+            local attackAttribute = monsters[choiceUser].Ataque
+            local defenseAttribute = monsters[choiceUser].Defesa
+            local lifeyAattribute = monsters[choiceUser].Vida
+            local speedAttribute = monsters[choiceUser].Velocidade
+            local inteligenceAttribute = monsters[choiceUser].Inteligencia
+    --Cartão
+            print("  =================================================================================================================")
+            print("                                 DESAFIO EM LUA :   FICHA DE MONSTROS        (●'◡'●)")
+            print("  =================================================================================================================")
+            print("| ")
+            print("| " .."                 Criatura:" .. monsterName)
+            print("|                            " .. monsterDescription)
+            print("| " .."                  Espécie: " .. species)
+            print("| " .."     Som da caractristico: " .. sound)
+            print("| " .."           Tamanho máximo: " .. heightMax)
+            print("| " .."   Simbolo representativo: " .. symbol)
+            print("| " .."     Horário de atividade: " .. favoriteTime)
+            print("| " .."                  Habitat: " .. habbitat)
+            print("| ")
+            print("| ".."Atributos:")
+            print("|        Ataque: "..getProgressBar(attackAttribute))
+            print("|        Defesa: "..getProgressBar(defenseAttribute))
+            print("|          Vida: "..getProgressBar(lifeyAattribute))
+            print("|    Velocidade: "..getProgressBar(speedAttribute))
+            print("|  Inteligência: "..getProgressBar(inteligenceAttribute))
+            print("| ")
+            print("  =================================================================================================================")
+            print()
+            print()
+
+        end
+
+
+    
+end
+
 
 
