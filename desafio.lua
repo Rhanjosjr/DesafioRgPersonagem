@@ -45,14 +45,16 @@ local monsters = {
 --função usada para calcular a barra de progresso---função que recebe um atributo e nos retorna uma barra de progresso em string
 local function getProgressBar(attribute)
     local resultado = ""
+    local fullchar = "🟩"
+    local emptychar = "⬛"
 
     for i = 1, 10, 1 do
         if i <= attribute then
             --cheio
-            resultado = resultado .."🟩"
+            resultado = resultado ..fullchar
         else
             --vazio
-            resultado=resultado.."⬛"
+            resultado=resultado..emptychar
         end
         
     end
